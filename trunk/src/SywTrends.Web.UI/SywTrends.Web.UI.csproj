@@ -133,6 +133,7 @@
     <Compile Include="App_Start\IoCActivator.cs" />
     <Compile Include="App_Start\IoC\ApiControllersInstaller.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\InteractionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LandingController.cs" />
     <Compile Include="Controllers\PostLoginController.cs" />
