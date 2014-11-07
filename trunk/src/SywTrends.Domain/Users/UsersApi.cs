@@ -1,0 +1,40 @@
+﻿using System.Collections.Generic;
+using System.Linq;
+using Platform.Client;
+
+namespace SywTrends.Domain.Users
+{
+	public interface IUsersApi
+	{
+		UserDto Current();
+		IList<UserDto> Get(IList<long> userIds);
+		IList<UserDto> GetFollowing(long userId);
+	}
+
+	public class UsersApi : ApiBase, IUsersApi
+	{
+		protected override string BasePath { get { return "users"; } }
+
+		public UsersApi(IPlatformProxy platformProxy):base(platformProxy)
+		{
+		}
+
+		public UserDto Current()
+		{
+			return Get<UserDto>("current");
+		}
+
+		public IList<UserDto> Get(IList<long> userIds)
+		{
+			return Get<IList<UserDto>>("get", new { Ids = userIds });
+		}
+
+		public IList<UserDto> GetFollowing(long userId)
+		{
+			var ids = Get<IList<long>>("followed-by", new { UserId = userId });
+			return !ids.Any() ?
+				new UserDto[0] :
+				Get(ids);
+		}
+	}
+}

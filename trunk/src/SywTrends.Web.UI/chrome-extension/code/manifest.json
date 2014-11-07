@@ -1,0 +1,30 @@
+{
+  "manifest_version": 2,
+  "version": "1.0",
+  "name": "Research Your Way",  
+  "description": "Now you can save your products directly to SYW from every site on the web",
+
+  "browser_action": {
+    "default_icon": "save-icon-16.png",
+    "default_title": "Research Your Way"
+  },
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+  
+  "devtools_page": "devtools/devtools_init_page.html",
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+
+  "permissions": [
+          "webRequest",
+          "activeTab",
+          "tabs",
+          "notifications",
+          "http://*/",
+          "https://*/",
+          "*://*.apphb.com/"
+        ],
+
+  "minimum_chrome_version": "9"
+}
